@@ -14,9 +14,9 @@
   <body>
     <header class="c-header o-header">
       <div class="c-header__logo">LOGO</div>
-      <button class="c-header__cart" aria-labelledby="card-items-count">
+      <button class="c-header__cart js-cart" aria-labelledby="card-items-count">
         🛒
-        <span class="c-header__cart-badge" id="card-items-count">1</span>
+        <span class="c-header__cart-badge js-cart-badge" id="card-items-count"></span>
       </button>
     </header>
     <main class="c-main o-main">
@@ -25,7 +25,7 @@
           <img src="./images/spatula.jpg" alt="" class="c-card__img" />
         </div>
         <div class="c-card__product-details o-product-details">
-          <h2 class="c-card__product-name o-product-name">Spatula</h2>
+          <h2 class="c-card__product-name js-product-name">Spatula</h2>
           <label for="quantity" class="c-card__qty-label">Qty.</label>
           <input
             type="number"
@@ -34,7 +34,24 @@
             id="quantity"
             value="1"
           />
-          <button class="c-card__add-to-card">Add to cart</button>
+          <button class="c-card__add-to-card js-add-to-cart" data-id="2">Add to cart</button>
+        </div>
+      </article>
+      <article class="c-card o-card">
+        <div class="c-card__img-container">
+          <img src="./images/spatula.jpg" alt="" class="c-card__img" />
+        </div>
+        <div class="c-card__product-details o-product-details">
+          <h2 class="c-card__product-name js-product-name">Spatula</h2>
+          <label for="quantity" class="c-card__qty-label">Qty.</label>
+          <input
+            type="number"
+            class="c-card__qty"
+            name="product-quantity"
+            id="quantity"
+            value="1"
+          />
+          <button class="c-card__add-to-card js-add-to-cart" data-id="1">Add to cart</button>
         </div>
       </article>
     </main>
