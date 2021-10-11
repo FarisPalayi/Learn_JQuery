@@ -12,7 +12,13 @@
     <script src="./home.js" defer></script>
   </head>
   <body>
-    <header></header>
+    <header class="c-header o-header">
+      <div class="c-header__logo">LOGO</div>
+      <button class="c-header__cart" aria-labelledby="card-items-count">
+        🛒
+        <span class="c-header__cart-badge" id="card-items-count">1</span>
+      </button>
+    </header>
     <main class="c-main o-main">
       <article class="c-card o-card">
         <div class="c-card__img-container">
@@ -32,6 +38,8 @@
         </div>
       </article>
     </main>
-    <footer></footer>
+    <footer class="c-footer">
+      <span class="c-footer__copyright">&copy; Copyright reserved</span>
+    </footer>
   </body>
 </html>
