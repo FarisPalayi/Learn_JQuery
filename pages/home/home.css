@@ -1,0 +1,20 @@
+img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.o-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.c-card {
+  padding: 7px;
+  border-radius: 8px;
+  background-color: silver;
+  overflow: hidden;
+  box-shadow: 1px 5px 11px rgba(0, 0, 0, 0.1);
+}
+
+/*# sourceMappingURL=home.css.map */

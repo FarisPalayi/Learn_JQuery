@@ -1,0 +1,20 @@
+[
+  {
+    "product_name": "Shoe",
+    "price_in_rupees": "100",
+    "stock": "100",
+    "delivery_fee": "40"
+  },
+  {
+    "product_name": "Cloths",
+    "price_in_rupees": "900",
+    "stock": "400",
+    "delivery_fee": "40"
+  },
+  {
+    "product_name": "Watches",
+    "price_in_rupees": "1200",
+    "stock": "30",
+    "delivery_fee": "40"
+  }
+]

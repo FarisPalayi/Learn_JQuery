@@ -4,10 +4,10 @@
   "description": "",
   "main": "jquery.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "sass -w ./pages/home/home.scss:./pages/home/home.css"
   },
   "keywords": [],
-  "author": "",
+  "author": "Faris P",
   "license": "ISC",
   "devDependencies": {
     "@types/jquery": "^3.5.6"

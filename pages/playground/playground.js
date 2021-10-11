@@ -81,7 +81,8 @@ $(function () {
       if (e.key !== "Enter") return;
       $(".input-text").text($(this).val()).show();
       // to get attribute value from jquery, use .attr()
-    });
+    })
+    .attr("placeholder", "Type something and press enter");
 
   // subscribe button
   $(".subscribe")
