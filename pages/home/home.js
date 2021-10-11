@@ -46,6 +46,7 @@ function renderProductCards(productDetails) {
           name="product-quantity"
           id="quantity"
           value="1"
+          min="1"
         />
         <button 
           class="c-card__add-to-card js-add-to-cart"
@@ -69,26 +70,42 @@ $.get("home.json", function (data, response) {
       image: product.image_url,
     })
   );
-});
 
-$(".js-add-to-cart").on("click", function () {
-  const quantity = parseFloat($(this).prev().val());
-  const name = $(this).prevAll(".js-product-name").text();
-  const id = parseFloat($(this).attr("data-id"));
+  $(".js-add-to-cart").on("click", function () {
+    const quantity = parseFloat($(this).prev().val());
+    const name = $(this).prevAll(".js-product-name").text();
+    const id = parseFloat($(this).attr("data-id"));
 
-  if (quantity <= 0) return;
+    if (quantity <= 0) return;
 
-  cart.addToCart({
-    id: id,
-    name: name,
-    qty: quantity,
+    cart.addToCart({
+      id: id,
+      name: name,
+      qty: quantity,
+    });
+
+    const totalProductsInTheCart = cart.getTotalItems();
+
+    if (totalProductsInTheCart > 0) {
+      $(".js-cart-badge").text(cart.getTotalItems());
+    } else {
+      $(".js-cart-badge").text("");
+    }
   });
 
-  const totalProductsInTheCart = cart.getTotalItems();
-
-  if (totalProductsInTheCart > 0) {
-    $(".js-cart-badge").text(cart.getTotalItems());
-  } else {
-    $(".js-cart-badge").text("");
-  }
+  console.log(cart);
 });
+
+// cart modal toggle 
+$(".js-cart-modal").hide();
+$(".js-cart-overlay").hide();
+
+$(".js-cart").on("click", function() {
+  $(".js-cart-modal").fadeToggle();
+  $(".js-cart-overlay").fadeToggle();
+})
+
+$(".js-cart-overlay").on("click", function() {
+  $(".js-cart-overlay").fadeToggle();
+  $(".js-cart-modal").fadeToggle();
+})
