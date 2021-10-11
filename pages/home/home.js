@@ -10,7 +10,9 @@ class Cart {
   }
 
   getTotalPrice() {
-    return console.log(this.cart); //! wrong. change
+    return this.cart
+      .map((item) => item.qty * item.price)
+      .reduce((prev, curr) => prev + curr, 0);
   }
 
   updateQty(id, newQty) {
@@ -126,7 +128,7 @@ function renderCartModal(cartProducts) {
   $(".js-cart-modal-buy-section").html(cartModalPriceSection);
 }
 
-// AJAX - render cards
+// AJAX - render cards, etc.
 $.get("home.json", function (data, response) {
   if (response !== "success") return;
 
@@ -145,7 +147,6 @@ $.get("home.json", function (data, response) {
     const clickedCardProductDetails = data.filter(
       (product) => product.id === id
     );
-    console.log(clickedCardProductDetails);
 
     if (clickedCardProductDetails.length <= 0) return;
 
@@ -156,8 +157,6 @@ $.get("home.json", function (data, response) {
       price: clickedCardProductDetails[0].price_in_rupees,
       image: clickedCardProductDetails[0].image_url,
     });
-
-    console.log(cart);
 
     const totalProductsInTheCart = cart.getTotalItems();
 
@@ -182,17 +181,24 @@ $(".js-cart").on("click", function () {
   if (cart.getCart().length <= 0)
     $(".js-cart-modal-item").html("<p> Cart is empty </p>");
 
-  $(".js-cart-modal-qty-input").on("change", function () {
+  function onModalQtyInputChange() {
+    if (parseFloat($(this).val()) <= 0 || !$(this).val()) $(this).val(1);
+
     const id = parseFloat($(this).attr("data-id"));
     const newQty = parseFloat($(this).val());
+
+    if (newQty <= 0) return;
 
     cart.updateQty(id, newQty);
 
     $(".js-cart-modal-total-price").text("₹" + cart.getTotalPrice());
-  });
+  }
+
+  $(".js-cart-modal-qty-input").on("change", onModalQtyInputChange);
+  $(".js-cart-modal-qty-input").on("blur", onModalQtyInputChange);
 });
 
 $(".js-cart-overlay").on("click", function () {
-  $(".js-cart-overlay").fadeToggle();
+  $(this).fadeToggle();
   $(".js-cart-modal").fadeToggle();
 });
