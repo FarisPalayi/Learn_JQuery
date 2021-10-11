@@ -9,6 +9,16 @@ class Cart {
     return this.cart.length;
   }
 
+  getTotalPrice() {
+    return console.log(this.cart); //! wrong. change
+  }
+
+  updateQty(id, newQty) {
+    const product = this.cart.find((product) => product.id === id);
+    product.qty = newQty;
+    this.cart = this.cart.map((prod) => (prod.id === id ? product : prod));
+  }
+
   addToCart(productDetails) {
     const { id, qty } = productDetails;
     const cart = [...this.cart];
@@ -39,6 +49,7 @@ function renderProductCards(productDetails) {
       </div>
       <div class="c-card__product-details o-product-details">
         <h2 class="c-card__product-name js-product-name">${productDetails.name}</h2>
+        <strong class="c-card__price js-card-price">₹${productDetails.price}</strong>
         <label for="quantity" class="c-card__qty-label">Qty.</label>
         <input
           type="number"
@@ -60,29 +71,93 @@ function renderProductCards(productDetails) {
   $(".js-main").append(cart);
 }
 
+function renderCartModal(cartProducts) {
+  $(".js-cart-modal-item").html("");
+
+  cartProducts.forEach((productInCart) => {
+    const cartModalProduct = `
+    <article class="c-cart-modal__product">
+      <div class="c-cart-modal__img-container">
+        <img
+          src=${productInCart.image}
+          alt=""
+          class="c-cart-modal__img"
+          width="80"
+          height="65"
+        />
+      </div>
+      <div
+        class="
+          c-cart-modal__product-info-container
+          o-cart-modal-product-info
+        "
+      >
+        <h2 class="c-cart-modal__product-name">${productInCart.name}</h2>
+        <p class="c-cart-modal__product-price">₹${productInCart.price}</p>
+        <label
+          for="cart-product-qty"
+          class="c-cart-modal__product-qty-label"
+          >Qty.</label
+        >
+        <input
+          type="number"
+          class="c-cart-modal__product-qty js-cart-modal-qty-input"
+          name="cart-product-quantity"
+          id="cart-product-qty"
+          value="${productInCart.qty}"
+          min="1"
+          data-id="${productInCart.id}"
+        />
+      </div>
+    </article>`;
+
+    $(".js-cart-modal-item").append(cartModalProduct);
+  });
+
+  const cartModalPriceSection = `
+    <div class="c-cart-modal__buy-btn-container o-buy-btn-container">
+      <span class="c-cart-modal__total">
+        Total Price: <strong class="js-cart-modal-total-price">₹${cart.getTotalPrice()}</strong>
+      </span>
+      <button class="c-cart-modal__buy-btn">Buy</button>
+    </div>
+  `;
+
+  $(".js-cart-modal-buy-section").html(cartModalPriceSection);
+}
+
 // AJAX - render cards
 $.get("home.json", function (data, response) {
   if (response !== "success") return;
-  data.forEach((product) =>
+
+  data.forEach((product) => {
     renderProductCards({
       name: product.product_name,
       id: product.id,
       image: product.image_url,
-    })
-  );
+      price: product.price_in_rupees,
+    });
+  });
 
   $(".js-add-to-cart").on("click", function () {
     const quantity = parseFloat($(this).prev().val());
-    const name = $(this).prevAll(".js-product-name").text();
     const id = parseFloat($(this).attr("data-id"));
+    const clickedCardProductDetails = data.filter(
+      (product) => product.id === id
+    );
+    console.log(clickedCardProductDetails);
 
-    if (quantity <= 0) return;
+    if (clickedCardProductDetails.length <= 0) return;
 
     cart.addToCart({
-      id: id,
-      name: name,
+      id: clickedCardProductDetails[0].id,
+      name: clickedCardProductDetails[0].product_name,
       qty: quantity,
+      price: clickedCardProductDetails[0].price_in_rupees,
+      image: clickedCardProductDetails[0].image_url,
     });
+
+    console.log(cart);
 
     const totalProductsInTheCart = cart.getTotalItems();
 
@@ -92,20 +167,32 @@ $.get("home.json", function (data, response) {
       $(".js-cart-badge").text("");
     }
   });
-
-  console.log(cart);
 });
 
-// cart modal toggle 
+// cart modal toggle
 $(".js-cart-modal").hide();
 $(".js-cart-overlay").hide();
 
-$(".js-cart").on("click", function() {
+$(".js-cart").on("click", function () {
   $(".js-cart-modal").fadeToggle();
   $(".js-cart-overlay").fadeToggle();
-})
 
-$(".js-cart-overlay").on("click", function() {
+  renderCartModal(cart.getCart());
+
+  if (cart.getCart().length <= 0)
+    $(".js-cart-modal-item").html("<p> Cart is empty </p>");
+
+  $(".js-cart-modal-qty-input").on("change", function () {
+    const id = parseFloat($(this).attr("data-id"));
+    const newQty = parseFloat($(this).val());
+
+    cart.updateQty(id, newQty);
+
+    $(".js-cart-modal-total-price").text("₹" + cart.getTotalPrice());
+  });
+});
+
+$(".js-cart-overlay").on("click", function () {
   $(".js-cart-overlay").fadeToggle();
   $(".js-cart-modal").fadeToggle();
-})
+});

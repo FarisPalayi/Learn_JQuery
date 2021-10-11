@@ -2,25 +2,25 @@
   {
     "id": 1,
     "product_name": "Shoe",
-    "price_in_rupees": "100",
-    "stock": "100",
-    "delivery_fee": "40",
+    "price_in_rupees": 100,
+    "stock": 100,
+    "delivery_fee": 40,
     "image_url": "./images/spatula.jpg"
   },
   {
     "id": 2,
     "product_name": "Cloths",
-    "price_in_rupees": "900",
-    "stock": "400",
-    "delivery_fee": "40",
+    "price_in_rupees": 900,
+    "stock": 400,
+    "delivery_fee": 40,
     "image_url": "./images/cloths.jpg"
   },
   {
     "id": 3,
     "product_name": "Watches",
-    "price_in_rupees": "1200",
-    "stock": "30",
-    "delivery_fee": "40",
+    "price_in_rupees": 1200,
+    "stock": 30,
+    "delivery_fee": 40,
     "image_url": "./images/watches.jpg"
   }
 ]

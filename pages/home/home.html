@@ -25,45 +25,8 @@
     <main class="c-main o-main js-main">
       <div class="c-cart-modal-overlay js-cart-overlay"></div>
       <section class="c-cart-modal o-cart-modal js-cart-modal">
-        <article class="c-cart-modal__product">
-          <div class="c-cart-modal__img-container">
-            <img
-              src="./images/spatula.jpg"
-              alt=""
-              class="c-cart-modal__img"
-              width="80"
-              height="65"
-            />
-          </div>
-          <div
-            class="
-              c-cart-modal__product-info-container
-              o-cart-modal-product-info
-            "
-          >
-            <h2 class="c-cart-modal__product-name">Spatula</h2>
-            <p class="c-cart-modal__product-price">$400</p>
-            <label
-              for="cart-product-qty"
-              class="c-cart-modal__product-qty-label"
-              >Qty.</label
-            >
-            <input
-              type="number"
-              class="c-cart-modal__product-qty"
-              name="cart-product-quantity"
-              id="cart-product-qty"
-              value="1"
-              min="1"
-            />
-          </div>
-        </article>
-        <div class="c-cart-modal__buy-btn-container o-buy-btn-container">
-          <span class="c-cart-modal__total"
-            >Total Price: <strong>$400</strong></span
-          >
-          <button class="c-cart-modal__buy-btn">Buy</button>
-        </div>
+        <div class="c-cart-modal__product-container js-cart-modal-item"></div>
+        <div class="js-cart-modal-buy-section"></div>
       </section>
       <!-- cards will be injected here -->
     </main>

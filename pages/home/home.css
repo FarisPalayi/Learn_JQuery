@@ -117,12 +117,18 @@ body > * {
   position: fixed;
   background-color: white;
   min-height: 300px;
-  min-width: 350px;
+  min-width: 370px;
   top: 40px;
   right: 40px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.c-cart-modal__product-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .c-cart-modal__product {
