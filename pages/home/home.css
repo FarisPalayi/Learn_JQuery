@@ -71,6 +71,12 @@ body > * {
   grid-auto-rows: max-content;
   gap: 20px;
 }
+@media screen and (max-width: 600px) {
+  .o-main {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
 
 .c-main {
   background-color: honeydew;
@@ -85,6 +91,7 @@ body > * {
   height: max-content;
   overflow: hidden;
   box-shadow: 1px 5px 11px rgba(0, 0, 0, 0.1);
+  min-width: 294px;
 }
 
 .c-card__img-container {
@@ -160,7 +167,8 @@ body > * {
   background-color: white;
   min-height: fit-content;
   max-height: calc(100vh - 80px);
-  min-width: 370px;
+  min-width: 300px;
+  width: clamp(300px, 70vw, 385px);
   top: 40px;
   right: 40px;
   padding: 20px;
@@ -310,13 +318,14 @@ body > * {
   transform: translate(-50%, -50%);
   z-index: 4;
   background-color: #38bdc2;
-  min-width: fit-content;
   max-width: 550px;
+  width: 90%;
   padding: 30px;
   border-radius: 10px;
   color: #082024;
   box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow: auto;
+  max-height: 90vh;
 }
 
 .c-form__close-btn {
@@ -343,6 +352,17 @@ body > * {
 .c-form__input-container > .c-form__input {
   flex-basis: 63%;
 }
+@media screen and (max-width: 520px) {
+  .c-form__input-container {
+    flex-direction: column;
+  }
+  .c-form__input-container > .c-form__input-label {
+    flex-basis: auto;
+  }
+  .c-form__input-container > .c-form__input {
+    flex-basis: auto;
+  }
+}
 
 .c-form__input {
   border: none;
@@ -359,6 +379,11 @@ body > * {
   margin-top: 10px;
 }
 
+@media screen and (max-width: 520px) {
+  .c-form__input-container--radio .c-form__input-container {
+    flex-direction: row;
+  }
+}
 .c-form__radio-group {
   padding-left: 5px;
 }
