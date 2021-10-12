@@ -103,6 +103,7 @@ function renderCartModal(cartProducts, cb = () => {}) {
       <button 
         class="c-cart-modal__delete-product js-cart-product-delete"
         data-id="${productInCart.id}"
+        aria-label="delete item"
       >×</button>
       <div class="c-cart-modal__img-container">
         <img
