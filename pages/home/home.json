@@ -21,7 +21,7 @@
     "price_in_rupees": 1699,
     "stock": 300,
     "delivery_fee": 40,
-    "image_url": "./images/shoe.jpg"
+    "image_url": "./images/nike-shoe.png"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "price_in_rupees": 2799,
     "stock": 140,
     "delivery_fee": 40,
-    "image_url": "./images/sony-headphone.jpg"
+    "image_url": "./images/sony-headphone.png"
   },
   {
     "id": 5,
