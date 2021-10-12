@@ -73,12 +73,12 @@ function renderProductCards(productDetails) {
       <div class="c-card__product-details o-product-details">
         <h2 class="c-card__product-name js-product-name">${productDetails.name}</h2>
         <strong class="c-card__price js-card-price">₹${productDetails.price}</strong>
-        <label for="quantity" class="c-card__qty-label">Qty.</label>
+        <label for="quantity-${productDetails.id}" class="c-card__qty-label">Qty.</label>
         <input
           type="number"
           class="c-card__qty"
           name="product-quantity"
-          id="quantity"
+          id="quantity-${productDetails.id}"
           value="1"
           min="1"
         />
@@ -122,7 +122,7 @@ function renderCartModal(cartProducts, cb = () => {}) {
         <h2 class="c-cart-modal__product-name">${productInCart.name}</h2>
         <p class="c-cart-modal__product-price">₹${productInCart.price}</p>
         <label
-          for="cart-product-qty"
+          for="cart-product-qty-${productInCart.id}"
           class="c-cart-modal__product-qty-label"
           >Qty.</label
         >
@@ -130,7 +130,7 @@ function renderCartModal(cartProducts, cb = () => {}) {
           type="number"
           class="c-cart-modal__product-qty js-cart-modal-qty-input"
           name="cart-product-quantity"
-          id="cart-product-qty"
+          id="cart-product-qty-${productInCart.id}"
           value="${productInCart.qty}"
           min="1"
           data-id="${productInCart.id}"
