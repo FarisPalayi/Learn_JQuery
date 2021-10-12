@@ -261,3 +261,7 @@ $(".js-form-close-btn").on("click", function () {
   $(".js-form").fadeOut();
   $(".js-form-overlay").fadeOut();
 });
+
+$(".js-form input").on("keypress", function (e) {
+  if (e.key === "Enter") e.preventDefault(); // bugfix. Form auto-closing when pressed enter
+});

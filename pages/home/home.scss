@@ -178,7 +178,7 @@ $modal-z-index: 2;
   $modal-top: 40px;
   position: fixed;
   background-color: white;
-  min-height: 300px;
+  min-height: fit-content;
   max-height: calc(100vh - ($modal-top * 2));
   min-width: 370px;
   top: $modal-top;
