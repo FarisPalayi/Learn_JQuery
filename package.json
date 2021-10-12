@@ -10,6 +10,7 @@
   "author": "Faris P",
   "license": "ISC",
   "devDependencies": {
-    "@types/jquery": "^3.5.6"
+    "@types/jquery": "^3.5.6",
+    "sass": "^1.42.1"
   }
 }

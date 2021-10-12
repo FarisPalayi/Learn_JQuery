@@ -138,6 +138,7 @@ $modal-z-index: 2;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .c-cart-modal__product-container {
@@ -191,7 +192,7 @@ $modal-z-index: 2;
 .c-cart-modal__close {
   $close-size: 20px;
   position: absolute;
-  border-radius: 50%;
+  border-radius: 5%;
   border: none;
   width: $close-size;
   height: $close-size;
@@ -201,7 +202,6 @@ $modal-z-index: 2;
   color: rgb(71, 71, 71);
   top: 0;
   right: 0;
-  transform: translate(50%, -50%);
   z-index: $modal-z-index + 1;
   transition: background-color 250ms;
 

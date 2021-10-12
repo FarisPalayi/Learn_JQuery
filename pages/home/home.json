@@ -1,26 +1,50 @@
 [
   {
     "id": 1,
-    "product_name": "Shoe",
-    "price_in_rupees": 100,
-    "stock": 100,
+    "product_name": "Hand bag",
+    "price_in_rupees": 779,
+    "stock": 90,
     "delivery_fee": 40,
-    "image_url": "./images/spatula.jpg"
+    "image_url": "./images/bag.jpg"
   },
   {
     "id": 2,
-    "product_name": "Cloths",
-    "price_in_rupees": 900,
+    "product_name": "Headphone",
+    "price_in_rupees": 1199,
     "stock": 400,
     "delivery_fee": 40,
-    "image_url": "./images/cloths.jpg"
+    "image_url": "./images/headphone.png"
   },
   {
     "id": 3,
-    "product_name": "Watches",
-    "price_in_rupees": 1200,
-    "stock": 30,
+    "product_name": "Nike Shoe",
+    "price_in_rupees": 1699,
+    "stock": 300,
     "delivery_fee": 40,
-    "image_url": "./images/watches.jpg"
+    "image_url": "./images/shoe.jpg"
+  },
+  {
+    "id": 4,
+    "product_name": "Sony Headphones",
+    "price_in_rupees": 2799,
+    "stock": 140,
+    "delivery_fee": 40,
+    "image_url": "./images/sony-headphone.jpg"
+  },
+  {
+    "id": 5,
+    "product_name": "Watch",
+    "price_in_rupees": 939,
+    "stock": 700,
+    "delivery_fee": 40,
+    "image_url": "./images/watch.jpg"
+  },
+  {
+    "id": 6,
+    "product_name": "Shoe",
+    "price_in_rupees": 1199,
+    "stock": 200,
+    "delivery_fee": 40,
+    "image_url": "./images/shoe-2.jpg"
   }
 ]

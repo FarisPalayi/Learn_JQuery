@@ -123,6 +123,7 @@ body > * {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .c-cart-modal__product-container {
@@ -174,7 +175,7 @@ body > * {
 
 .c-cart-modal__close {
   position: absolute;
-  border-radius: 50%;
+  border-radius: 5%;
   border: none;
   width: 20px;
   height: 20px;
@@ -184,7 +185,6 @@ body > * {
   color: #474747;
   top: 0;
   right: 0;
-  transform: translate(50%, -50%);
   z-index: 3;
   transition: background-color 250ms;
 }
