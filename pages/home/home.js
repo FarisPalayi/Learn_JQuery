@@ -39,6 +39,10 @@ class Cart {
 
     this.cart = cart;
   }
+
+  deleteItem(id) {
+    this.cart = this.cart.filter((product) => product.id !== id);
+  }
 }
 
 const cart = new Cart();
@@ -79,6 +83,10 @@ function renderCartModal(cartProducts) {
   cartProducts.forEach((productInCart) => {
     const cartModalProduct = `
     <article class="c-cart-modal__product">
+      <button 
+        class="c-cart-modal__delete-product js-cart-product-delete"
+        data-id="${productInCart.id}"
+      >×</button>
       <div class="c-cart-modal__img-container">
         <img
           src=${productInCart.image}
@@ -206,11 +214,18 @@ $(".js-cart").on("click", function () {
 
   $(".js-cart-modal-qty-input").on("change", onModalQtyInputChange);
   $(".js-cart-modal-qty-input").on("blur", onModalQtyInputChange);
-  
-  // close modal 
+
+  // close modal
   $(".js-cart-modal-close").on("click", function () {
     $(".js-cart-overlay").fadeOut();
     $(".js-cart-modal").fadeOut();
+  });
+
+  // delete item from cart
+  $(".js-cart-product-delete").on("click", function () {
+    const id = parseFloat($(this).attr("data-id"));
+    cart.deleteItem(id);
+    renderCartModal(cart.getCart());
   });
 });
 

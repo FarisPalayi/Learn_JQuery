@@ -63,7 +63,7 @@ body {
   font-size: 0.6rem;
   padding: 1px;
   text-align: center;
-  background-color: rgb(236, 36, 243);
+  background-color: rgb(240, 73, 170);
   color: white;
   border-radius: 50%;
   transform: scale(1);
@@ -196,12 +196,41 @@ $modal-z-index: 2;
 }
 
 .c-cart-modal__product {
+  position: relative;
   display: flex;
   gap: 15px;
   padding: 10px;
   border-radius: 7px;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.08);
   background-color: lightBlue;
+  overflow: hidden;
+
+  &:hover {
+    > .c-cart-modal__delete-product {
+      opacity: 1;
+    }
+  }
+}
+
+.c-cart-modal__delete-product {
+  $delete-product-size: 20px;
+  position: absolute;
+  height: $delete-product-size;
+  width: $delete-product-size;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: transparent;
+  color: rgb(129, 171, 177);
+  font-size: 0.85rem;
+  text-align: center;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 300ms;
+
+  &:hover {
+    background-color: rgb(199, 224, 233);
+  }
 }
 
 .c-cart-modal__img-container {
