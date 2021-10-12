@@ -224,10 +224,7 @@ body > * {
   font-size: large;
 }
 
-.c-cart-modal__product-price {
-  font-size: small;
-}
-
+.c-cart-modal__product-price,
 .c-cart-modal__product-qty-label {
   font-size: small;
 }
@@ -345,6 +342,7 @@ body > * {
 .c-form__input {
   border: none;
   border-radius: 5px;
+  padding: 0 8px;
 }
 
 .c-form input[type=text],

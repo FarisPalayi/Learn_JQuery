@@ -249,10 +249,7 @@ $modal-z-index: 2;
   font-size: large;
 }
 
-.c-cart-modal__product-price {
-  font-size: small;
-}
-
+.c-cart-modal__product-price,
 .c-cart-modal__product-qty-label {
   font-size: small;
 }
@@ -384,6 +381,7 @@ $form-z-index: 4;
 .c-form__input {
   border: none;
   border-radius: 5px;
+  padding: 0 8px;
 }
 
 .c-form input[type="text"],

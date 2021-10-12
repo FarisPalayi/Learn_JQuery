@@ -77,7 +77,7 @@ function renderProductCards(productDetails) {
   $(".js-main").append(cart);
 }
 
-function renderCartModal(cartProducts) {
+function renderCartModal(cartProducts, cb = () => {}) {
   $(".js-cart-modal-item").html("");
 
   cartProducts.forEach((productInCart) => {
@@ -122,6 +122,7 @@ function renderCartModal(cartProducts) {
     </article>`;
 
     $(".js-cart-modal-item").append(cartModalProduct);
+    cb();
   });
 
   const cartModalPriceSection = `
@@ -144,6 +145,14 @@ function renderCartModal(cartProducts) {
 
   $(".js-cart-modal").prepend(modalCloseBtn);
   $(".js-cart-modal-buy-section").html(cartModalPriceSection);
+}
+
+function updateCartBadge() {
+  if (cart.getTotalItems() > 0) {
+    $(".js-cart-badge").text(cart.getTotalItems());
+  } else {
+    $(".js-cart-badge").text("");
+  }
 }
 
 // AJAX - render cards, etc.
@@ -176,13 +185,7 @@ $.get("home.json", function (data, response) {
       image: clickedCardProductDetails[0].image_url,
     });
 
-    const totalProductsInTheCart = cart.getTotalItems();
-
-    if (totalProductsInTheCart > 0) {
-      $(".js-cart-badge").text(cart.getTotalItems());
-    } else {
-      $(".js-cart-badge").text("");
-    }
+    updateCartBadge();
   });
 });
 
@@ -190,47 +193,27 @@ $.get("home.json", function (data, response) {
 $(".js-cart-modal").hide();
 $(".js-cart-overlay").hide();
 
-$(".js-cart").on("click", function () {
-  $(".js-cart-modal").fadeToggle();
-  $(".js-cart-overlay").fadeToggle();
-
-  renderCartModal(cart.getCart());
-
+function showMsgWhenCartIsEmpty() {
   if (cart.getCart().length <= 0) {
     $(".js-cart-modal-item").html("<p> Cart is empty </p>");
     $(".js-cart-bottom").html("");
   }
+}
 
-  function onModalQtyInputChange() {
-    if (parseFloat($(this).val()) <= 0 || !$(this).val()) $(this).val(1);
+function onModalQtyInputChange() {
+  if (parseFloat($(this).val()) <= 0 || !$(this).val()) $(this).val(1);
 
-    const id = parseFloat($(this).attr("data-id"));
-    const newQty = parseFloat($(this).val());
+  const id = parseFloat($(this).attr("data-id"));
+  const newQty = parseFloat($(this).val());
 
-    if (newQty <= 0) return;
+  if (newQty <= 0) return;
 
-    cart.updateQty(id, newQty);
+  cart.updateQty(id, newQty);
 
-    $(".js-cart-modal-total-price").text("₹" + cart.getTotalPrice());
-  }
+  $(".js-cart-modal-total-price").text("₹" + cart.getTotalPrice());
+}
 
-  $(".js-cart-modal-qty-input").on("change", onModalQtyInputChange);
-  $(".js-cart-modal-qty-input").on("blur", onModalQtyInputChange);
-
-  // close modal
-  $(".js-cart-modal-close").on("click", function () {
-    $(".js-cart-overlay").fadeOut();
-    $(".js-cart-modal").fadeOut();
-  });
-
-  // delete item from cart
-  $(".js-cart-product-delete").on("click", function () {
-    const id = parseFloat($(this).attr("data-id"));
-    cart.deleteItem(id);
-    renderCartModal(cart.getCart());
-  });
-
-  // form
+function buy() {
   $(".js-cart-buy-btn").on("click", function () {
     if (cart.getTotalPrice() <= 0) return;
 
@@ -241,6 +224,42 @@ $(".js-cart").on("click", function () {
     $(".js-form-overlay").fadeIn();
     $(".js-form-price").text(`₹${cart.getTotalPrice()}`);
   });
+}
+
+function deleteProductFromCart() {
+  $(".js-cart-product-delete").on("click", function () {
+    const id = parseFloat($(this).attr("data-id"));
+    cart.deleteItem(id);
+
+    renderCartModal(cart.getCart(), () => {
+      deleteProductFromCart();
+      buy();
+    });
+
+    updateCartBadge();
+    showMsgWhenCartIsEmpty();
+    buy();
+  });
+}
+
+$(".js-cart").on("click", function () {
+  $(".js-cart-modal").fadeToggle();
+  $(".js-cart-overlay").fadeToggle();
+
+  renderCartModal(cart.getCart());
+  showMsgWhenCartIsEmpty();
+
+  $(".js-cart-modal-qty-input").on("change", onModalQtyInputChange);
+  $(".js-cart-modal-qty-input").on("blur", onModalQtyInputChange);
+
+  // close modal
+  $(".js-cart-modal-close").on("click", function () {
+    $(".js-cart-overlay").fadeOut();
+    $(".js-cart-modal").fadeOut();
+  });
+
+  deleteProductFromCart();
+  buy();
 });
 
 $(".js-cart-overlay").on("click", function () {
