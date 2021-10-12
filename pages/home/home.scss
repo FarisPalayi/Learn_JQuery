@@ -146,11 +146,22 @@ body {
   }
 
   &:active {
+    transition: background-color 34ms;
     background-color: darken(#54b4c1, 10);
+    animation: cart-btn-anim 250ms forwards;
   }
-}
 
-.c-card__qty {
+  @keyframes cart-btn-anim {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 }
 
 // cart modal
@@ -283,7 +294,7 @@ $modal-z-index: 2;
 .c-footer {
   position: relative;
   height: 130px;
-  background-color: rgb(49, 47, 75);
+  background-color: #124c54;
 }
 
 .c-footer__copyright {
@@ -293,7 +304,7 @@ $modal-z-index: 2;
   left: 0;
   padding: 7px;
   color: rgb(221, 221, 221);
-  background-color: rgb(33, 32, 49);
+  background-color: #0b2f34;
   font-size: 0.65rem;
   text-align: center;
 }

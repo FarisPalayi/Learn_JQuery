@@ -132,7 +132,20 @@ body > * {
   background-color: #79c4cf;
 }
 .c-card__add-to-card:active {
+  transition: background-color 34ms;
   background-color: #3c99a6;
+  animation: cart-btn-anim 250ms forwards;
+}
+@keyframes cart-btn-anim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .o-cart-modal {
@@ -251,7 +264,7 @@ body > * {
 .c-footer {
   position: relative;
   height: 130px;
-  background-color: #312f4b;
+  background-color: #124c54;
 }
 
 .c-footer__copyright {
@@ -261,7 +274,7 @@ body > * {
   left: 0;
   padding: 7px;
   color: #dddddd;
-  background-color: #212031;
+  background-color: #0b2f34;
   font-size: 0.65rem;
   text-align: center;
 }
