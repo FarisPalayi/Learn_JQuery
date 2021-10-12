@@ -75,6 +75,10 @@ body {
   }
 }
 
+.u-hide {
+  display: none;
+}
+
 // main
 
 .o-main {
@@ -371,7 +375,11 @@ $form-z-index: 4;
   border: none;
   background: transparent;
   color: rgb(26, 142, 172);
-  border-radius: 5px;
+  transition: background-color 200ms;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.342);
+  }
 }
 
 .c-form__title {
