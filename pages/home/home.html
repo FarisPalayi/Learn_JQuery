@@ -3,35 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>store</title>
-
     <link rel="stylesheet" href="../../vendors/reset.css" />
     <link rel="stylesheet" href="home.css" />
     <script src="../../vendors/jquery.js"></script>
     <script src="./home.js" defer></script>
   </head>
   <body>
+
     <header class="c-header o-header">
       <div class="c-header__logo">LOGO</div>
-      <button class="c-header__cart js-cart" aria-labelledby="card-items-count">
-        🛒
+      <button 
+        class="c-header__cart js-cart"
+        aria-labelledby="card-items-count"
+      >🛒
         <span
           class="c-header__cart-badge js-cart-badge"
           id="card-items-count"
         ></span>
       </button>
     </header>
+
     <main class="c-main o-main js-main">
       <div class="c-cart-modal-overlay js-cart-overlay"></div>
       <section class="c-cart-modal o-cart-modal js-cart-modal">
         <div class="c-cart-modal__product-container js-cart-modal-item"></div>
         <div class="js-cart-modal-buy-section"></div>
       </section>
-      <!-- cards will be injected here -->
+      <!-- product cards will be injected here -->
     </main>
+
     <footer class="c-footer">
       <span class="c-footer__copyright">&copy; Copyright reserved</span>
     </footer>
+
   </body>
 </html>

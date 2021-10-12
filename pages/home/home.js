@@ -125,6 +125,16 @@ function renderCartModal(cartProducts) {
     </div>
   `;
 
+  const modalCloseBtn = `
+    <button 
+      class="c-cart-modal__close js-cart-modal-close" 
+      aria-label="close the cart product details modal"
+    >
+      ×
+    </button>
+  `;
+
+  $(".js-cart-modal").prepend(modalCloseBtn);
   $(".js-cart-modal-buy-section").html(cartModalPriceSection);
 }
 
@@ -196,6 +206,12 @@ $(".js-cart").on("click", function () {
 
   $(".js-cart-modal-qty-input").on("change", onModalQtyInputChange);
   $(".js-cart-modal-qty-input").on("blur", onModalQtyInputChange);
+  
+  // close modal 
+  $(".js-cart-modal-close").on("click", function () {
+    $(".js-cart-overlay").fadeOut();
+    $(".js-cart-modal").fadeOut();
+  });
 });
 
 $(".js-cart-overlay").on("click", function () {
