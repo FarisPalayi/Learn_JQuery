@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="../../vendors/reset.css" />
     <link rel="stylesheet" href="home.css" />
     <script src="../../vendors/jquery.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <script src="./home.js" defer></script>
   </head>
   <body>
@@ -33,46 +38,91 @@
         <button class="c-form__close-btn js-form-close-btn">×</button>
 
         <h3 class="c-form__title">Fill in details</h3>
-        
+
         <div class="c-form__input-container">
           <label for="name" class="u-colon c-form__input-label">Name</label>
-          <input type="text" name="name" id="name" class="c-form__input" required/>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="c-form__input"
+            required
+          />
         </div>
 
         <div class="c-form__input-container">
           <label for="state" class="u-colon c-form__input-label">State</label>
-          <input type="text" name="state" id="state" class="c-form__input" required/>
+          <input
+            type="text"
+            name="state"
+            id="state"
+            class="c-form__input"
+            required
+          />
         </div>
 
         <div class="c-form__input-container">
           <label for="city" class="u-colon c-form__input-label">City</label>
-          <input type="text" name="city" id="city" class="c-form__input" required/>
+          <input
+            type="text"
+            name="city"
+            id="city"
+            class="c-form__input"
+            required
+          />
         </div>
 
         <div class="c-form__input-container">
-          <label for="area" class="u-colon c-form__input-label">Area/Locality</label>
-          <input type="text" name="area" id="area" class="c-form__input" required/>
+          <label for="area" class="u-colon c-form__input-label"
+            >Area/Locality</label
+          >
+          <input
+            type="text"
+            name="area"
+            id="area"
+            class="c-form__input"
+            required
+          />
         </div>
 
         <div class="c-form__input-container">
-          <label for="pincode" class="u-colon c-form__input-label">Pincode</label>
-          <input type="number" name="pincode" id="pincode" class="c-form__input" required/>
+          <label for="pincode" class="u-colon c-form__input-label"
+            >Pincode</label
+          >
+          <input
+            type="number"
+            name="pincode"
+            id="pincode"
+            class="c-form__input"
+            required
+          />
         </div>
 
         <div class="c-form__input-container">
-          <label for="address" class="u-colon c-form__input-label">Address</label>
-          <textarea name="address" id="address" class="c-form__input" cols="30" rows="3"required></textarea>
+          <label for="address" class="u-colon c-form__input-label"
+            >Address</label
+          >
+          <textarea
+            name="address"
+            id="address"
+            class="c-form__input"
+            cols="30"
+            rows="3"
+            required
+          ></textarea>
         </div>
-        
+
         <div class="c-form__input-container c-form__input-container--radio">
           <div class="c-form__radio-title u-colon">Payment Method</div>
           <div class="c-form__radio-group">
             <div class="c-form__input-container">
-              <input type="radio" name="delivery" id="cash" required/>
-              <label for="cash" class="c-form__radio-label">Cash On Delivery</label>
+              <input type="radio" name="delivery" id="cash" required />
+              <label for="cash" class="c-form__radio-label"
+                >Cash On Delivery</label
+              >
             </div>
             <div class="c-form__input-container">
-              <input type="radio" name="delivery" id="card" required/>
+              <input type="radio" name="delivery" id="card" required />
               <label for="card" class="c-form__radio-label">Net banking</label>
             </div>
           </div>
