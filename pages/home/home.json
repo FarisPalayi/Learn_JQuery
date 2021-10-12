@@ -46,5 +46,13 @@
     "stock": 200,
     "delivery_fee": 40,
     "image_url": "./images/shoe-2.jpg"
+  },
+  {
+    "id": 7,
+    "product_name": "Spatula",
+    "price_in_rupees": 299,
+    "stock": 1200,
+    "delivery_fee": 40,
+    "image_url": "./images/spatula.jpg"
   }
 ]
