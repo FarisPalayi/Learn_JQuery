@@ -15,10 +15,15 @@ class Cart {
       .reduce((prev, curr) => prev + curr, 0);
   }
 
+  setCart(cart) {
+    this.cart = cart;
+  }
+
   updateQty(id, newQty) {
     const product = this.cart.find((product) => product.id === id);
     product.qty = newQty;
     this.cart = this.cart.map((prod) => (prod.id === id ? product : prod));
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   addToCart(productDetails) {
@@ -38,14 +43,26 @@ class Cart {
     cart.push(productDetails);
 
     this.cart = cart;
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   deleteItem(id) {
     this.cart = this.cart.filter((product) => product.id !== id);
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 }
 
 const cart = new Cart();
+
+function updateCartLocalStorage() {
+  if (!localStorage) return;
+  const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart"));
+
+  if (cartFromLocalStorage && Array.isArray(cartFromLocalStorage))
+    cart.setCart(cartFromLocalStorage);
+}
+
+updateCartLocalStorage();
 
 function renderProductCards(productDetails) {
   const cart = `      
@@ -154,6 +171,8 @@ function updateCartBadge() {
     $(".js-cart-badge").text("");
   }
 }
+
+updateCartBadge();
 
 // AJAX - render cards, etc.
 $.get("home.json", function (data, response) {

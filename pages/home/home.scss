@@ -327,6 +327,7 @@ $form-z-index: 4;
   z-index: $form-z-index - 1;
   display: flex;
   max-height: 100vh;
+  background-color: rgba(3, 3, 3, 0.562);
 }
 
 .o-form {

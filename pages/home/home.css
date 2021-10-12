@@ -290,6 +290,7 @@ body > * {
   z-index: 3;
   display: flex;
   max-height: 100vh;
+  background-color: rgba(3, 3, 3, 0.562);
 }
 
 .o-form {
