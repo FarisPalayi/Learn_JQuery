@@ -256,6 +256,10 @@ body > * {
   background-color: #cccccc;
 }
 
+.c-cart__empty {
+  color: #777;
+}
+
 .u-overlay {
   position: fixed;
   inset: 0;

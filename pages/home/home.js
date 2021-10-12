@@ -214,7 +214,7 @@ $(".js-cart-overlay").hide();
 
 function showMsgWhenCartIsEmpty() {
   if (cart.getCart().length <= 0) {
-    $(".js-cart-modal-item").html("<p> Cart is empty </p>");
+    $(".js-cart-modal-item").html("<p class='c-cart__empty'> Cart is empty </p>");
     $(".js-cart-bottom").html("");
   }
 }
