@@ -10,13 +10,10 @@
     <script src="./home.js" defer></script>
   </head>
   <body>
-
     <header class="c-header o-header">
       <div class="c-header__logo">LOGO</div>
-      <button 
-        class="c-header__cart js-cart"
-        aria-labelledby="card-items-count"
-      >🛒
+      <button class="c-header__cart js-cart" aria-labelledby="card-items-count">
+        🛒
         <span
           class="c-header__cart-badge js-cart-badge"
           id="card-items-count"
@@ -25,17 +22,72 @@
     </header>
 
     <main class="c-main o-main js-main">
-      <div class="c-cart-modal-overlay js-cart-overlay"></div>
+      <div class="c-cart-modal-overlay u-overlay js-cart-overlay"></div>
       <section class="c-cart-modal o-cart-modal js-cart-modal">
         <div class="c-cart-modal__product-container js-cart-modal-item"></div>
         <div class="js-cart-modal-buy-section"></div>
       </section>
+
+      <div class="c-form-overlay u-overlay js-form-overlay"></div>
+      <form action="/" class="c-form o-form js-form">
+        <button class="c-form__close-btn js-form-close-btn">×</button>
+
+        <h3 class="c-form__title">Fill in details</h3>
+        
+        <div class="c-form__input-container">
+          <label for="name" class="u-colon c-form__input-label">Name</label>
+          <input type="text" name="name" id="name" class="c-form__input" required/>
+        </div>
+
+        <div class="c-form__input-container">
+          <label for="state" class="u-colon c-form__input-label">State</label>
+          <input type="text" name="state" id="state" class="c-form__input" required/>
+        </div>
+
+        <div class="c-form__input-container">
+          <label for="city" class="u-colon c-form__input-label">City</label>
+          <input type="text" name="city" id="city" class="c-form__input" required/>
+        </div>
+
+        <div class="c-form__input-container">
+          <label for="area" class="u-colon c-form__input-label">Area/Locality</label>
+          <input type="text" name="area" id="area" class="c-form__input" required/>
+        </div>
+
+        <div class="c-form__input-container">
+          <label for="pincode" class="u-colon c-form__input-label">Pincode</label>
+          <input type="number" name="pincode" id="pincode" class="c-form__input" required/>
+        </div>
+
+        <div class="c-form__input-container">
+          <label for="address" class="u-colon c-form__input-label">Address</label>
+          <textarea name="address" id="address" class="c-form__input" cols="30" rows="3"required></textarea>
+        </div>
+        
+        <div class="c-form__input-container c-form__input-container--radio">
+          <div class="c-form__radio-title u-colon">Payment Method</div>
+          <div class="c-form__radio-group">
+            <div class="c-form__input-container">
+              <input type="radio" name="delivery" id="cash" required/>
+              <label for="cash" class="c-form__radio-label">Cash On Delivery</label>
+            </div>
+            <div class="c-form__input-container">
+              <input type="radio" name="delivery" id="card" required/>
+              <label for="card" class="c-form__radio-label">Net banking</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-form__bottom o-form-bottom">
+          <span>Total Price: <strong class="js-form-price">$400</strong> </span>
+          <button class="c-form__payment-btn">Proceed to payment</button>
+        </div>
+      </form>
       <!-- product cards will be injected here -->
     </main>
 
     <footer class="c-footer">
       <span class="c-footer__copyright">&copy; Copyright reserved</span>
     </footer>
-
   </body>
 </html>

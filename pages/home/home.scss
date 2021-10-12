@@ -289,12 +289,16 @@ $modal-z-index: 2;
 
 // modal overlay
 
-.c-cart-modal-overlay {
+.u-overlay {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.178);
   inset: 0;
-  z-index: $modal-z-index - 1;
+  background-color: rgba(0, 0, 0, 0.178);
   transition: background-color 200ms;
+  z-index: 2;
+}
+
+.c-cart-modal-overlay {
+  z-index: $modal-z-index - 1;
 }
 
 // bottom part of the modal
@@ -316,6 +320,113 @@ $modal-z-index: 2;
   background-color: darken(lightBlue, 20);
   color: white;
   box-shadow: 0 0 10px rgb(173, 216, 230, 0.1);
+}
+
+// form (modal)
+
+$form-z-index: 4;
+
+.c-form-overlay {
+  z-index: $form-z-index - 1;
+  display: flex;
+  max-height: 100vh;
+}
+
+.o-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.c-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: $form-z-index;
+  background-color: rgb(56, 189, 194);
+  min-width: fit-content;
+  max-width: 550px;
+  padding: 30px;
+  border-radius: 10px;
+  color: #082024;
+  box-shadow: 10px 20px 20px rgba(0,0,0,.1);
+  overflow: hidden;
+}
+
+.c-form__close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background: transparent;
+  color: rgb(26, 142, 172);
+  border-radius: 5px;
+}
+
+.c-form__title {
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.c-form__input-container {
+  display: flex;
+
+  > .c-form__input-label {
+    flex-basis: 37%;
+  }
+
+  > .c-form__input {
+    flex-basis: 63%;
+  }
+}
+
+.c-form__input {
+  border: none;
+  border-radius: 5px;
+}
+
+.c-form input[type="text"],
+.c-form input[type="number"] {
+  height: 30px;
+}
+
+.c-form__input-container--radio {
+  margin-top: 10px;
+}
+
+.c-form__radio-group {
+  padding-left: 5px;
+}
+
+.c-form__radio-label {
+  white-space: nowrap;
+  color: #094047;
+  font-size: 0.9rem;
+}
+
+.u-colon {
+  &::after {
+    content: ":";
+  }
+}
+
+.c-form__bottom {
+  margin-top: 20px;
+}
+
+.o-form-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-form__payment-btn {
+  background-color: #2095a5;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 13px;
+  color: rgb(228, 237, 241);
 }
 
 // footer

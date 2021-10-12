@@ -125,11 +125,11 @@ function renderCartModal(cartProducts) {
   });
 
   const cartModalPriceSection = `
-    <div class="c-cart-modal__buy-btn-container o-buy-btn-container">
+    <div class="c-cart-modal__buy-btn-container o-buy-btn-container js-cart-bottom">
       <span class="c-cart-modal__total">
         Total Price: <strong class="js-cart-modal-total-price">₹${cart.getTotalPrice()}</strong>
       </span>
-      <button class="c-cart-modal__buy-btn">Buy</button>
+      <button class="c-cart-modal__buy-btn js-cart-buy-btn">Buy</button>
     </div>
   `;
 
@@ -196,8 +196,10 @@ $(".js-cart").on("click", function () {
 
   renderCartModal(cart.getCart());
 
-  if (cart.getCart().length <= 0)
+  if (cart.getCart().length <= 0) {
     $(".js-cart-modal-item").html("<p> Cart is empty </p>");
+    $(".js-cart-bottom").html("");
+  }
 
   function onModalQtyInputChange() {
     if (parseFloat($(this).val()) <= 0 || !$(this).val()) $(this).val(1);
@@ -227,9 +229,35 @@ $(".js-cart").on("click", function () {
     cart.deleteItem(id);
     renderCartModal(cart.getCart());
   });
+
+  // form
+  $(".js-cart-buy-btn").on("click", function () {
+    if (cart.getTotalPrice() <= 0) return;
+
+    $(".js-cart-modal").fadeOut();
+    $(".js-cart-overlay").fadeOut();
+
+    $(".js-form").fadeIn();
+    $(".js-form-overlay").fadeIn();
+    $(".js-form-price").text(`₹${cart.getTotalPrice()}`);
+  });
 });
 
 $(".js-cart-overlay").on("click", function () {
-  $(this).fadeToggle();
-  $(".js-cart-modal").fadeToggle();
+  $(this).fadeOut();
+  $(".js-cart-modal").fadeOut();
+});
+
+// hide form initially
+$(".js-form").hide();
+$(".js-form-overlay").hide();
+
+$(".js-form-overlay").on("click", function () {
+  $(".js-form").fadeOut();
+  $(".js-form-overlay").fadeOut();
+});
+
+$(".js-form-close-btn").on("click", function () {
+  $(".js-form").fadeOut();
+  $(".js-form-overlay").fadeOut();
 });
