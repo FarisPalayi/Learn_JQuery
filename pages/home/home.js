@@ -214,7 +214,9 @@ $(".js-cart-overlay").hide();
 
 function showMsgWhenCartIsEmpty() {
   if (cart.getCart().length <= 0) {
-    $(".js-cart-modal-item").html("<p class='c-cart__empty'> Cart is empty </p>");
+    $(".js-cart-modal-item").html(
+      "<p class='c-cart__empty'> Cart is empty </p>"
+    );
     $(".js-cart-bottom").html("");
   }
 }
@@ -279,6 +281,7 @@ $(".js-cart").on("click", function () {
 
   deleteProductFromCart();
   buy();
+  focusTrapModal($(".js-cart-modal")[0]);
 });
 
 $(".js-cart-overlay").on("click", function () {
@@ -303,3 +306,29 @@ $(".js-form-close-btn").on("click", function () {
 $(".js-form input").on("keypress", function (e) {
   if (e.key === "Enter") e.preventDefault(); // bugfix. Form auto-closing when pressed enter
 });
+
+// not jquery. copy pasted from another project
+function focusTrapModal(modal) {
+  const focusableElements = modal.querySelectorAll(
+    "button, [href], input, select, textarea"
+  );
+
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = [...focusableElements].pop();
+
+  const trapFocus = (event) => {
+    if (event.shiftKey && event.key === "Tab") {
+      if (document.activeElement !== firstFocusableElement) return;
+      lastFocusableElement.focus();
+      event.preventDefault();
+    } else if (!event.shiftKey && event.key === "Tab") {
+      if (document.activeElement !== lastFocusableElement) return;
+      firstFocusableElement.focus();
+      event.preventDefault();
+    }
+  };
+
+  modal.addEventListener("keydown", trapFocus);
+}
+
+focusTrapModal($(".js-form")[0]);
