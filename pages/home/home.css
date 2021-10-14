@@ -197,7 +197,7 @@ body > * {
   background-color: lightBlue;
   overflow: hidden;
 }
-.c-cart-modal__product:hover > .c-cart-modal__delete-product {
+.c-cart-modal__product:hover .c-cart-modal__delete-product {
   opacity: 1;
 }
 
@@ -218,6 +218,9 @@ body > * {
 }
 .c-cart-modal__delete-product:hover {
   background-color: #c7e0e9;
+}
+.c-cart-modal__delete-product:focus {
+  opacity: 1;
 }
 
 .c-cart-modal__img-container {

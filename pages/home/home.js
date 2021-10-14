@@ -261,6 +261,9 @@ function deleteProductFromCart() {
     updateCartBadge();
     showMsgWhenCartIsEmpty();
     buy();
+
+    $(".js-cart-modal-qty-input").on("change", onModalQtyInputChange);
+    $(".js-cart-modal-qty-input").on("blur", onModalQtyInputChange);
   });
 }
 
@@ -333,3 +336,15 @@ function focusTrapModal(modal) {
 }
 
 focusTrapModal($(".js-form")[0]);
+
+function closeModalOneEscPress(elm, elmOverlay) {
+  $(document).on("keyup", function (e) {
+    if (e.key === "Escape") {
+      elm.fadeOut();
+      elmOverlay.fadeOut();
+    }
+  });
+}
+
+closeModalOneEscPress($(".js-form"), $(".js-form-overlay"));
+closeModalOneEscPress($(".js-cart-modal"), $(".js-cart-overlay"));

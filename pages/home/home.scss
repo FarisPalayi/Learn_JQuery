@@ -1,5 +1,5 @@
 html {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #08282c;
 }
 
@@ -216,7 +216,7 @@ $modal-z-index: 2;
   overflow: hidden;
 
   &:hover {
-    > .c-cart-modal__delete-product {
+    .c-cart-modal__delete-product {
       opacity: 1;
     }
   }
@@ -240,6 +240,10 @@ $modal-z-index: 2;
 
   &:hover {
     background-color: rgb(199, 224, 233);
+  }
+
+  &:focus {
+    opacity: 1;
   }
 }
 
